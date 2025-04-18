@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Area</title>
+    <!--Tailwind css CDN link-->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body style="background: #3F5EFB;
+background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);">
+    <div id="container" class="flex justify-center my-52 ">
+        <div id="input__container"> 
+            <h1 class="font-bold text-2xl mb-4">Text Area</h1>
+            <textarea placeholder="Enter you'r text..." maxlength="200" id="input__textarea" class="border border-solid border-gray-600 rounded-lg w-96 h-40 p-2"></textarea>
+            <p id="charcount" class="text-right">0/200 Characters</p>
+            <p id="errormsg"></p>
+        </div>
+    </div>
+
+    <script>
+        const input__textarea=document.getElementById("input__textarea")
+        const charcount=document.getElementById("charcount")
+        const errormsg=document.getElementById("errormsg")
+
+        input__textarea.addEventListener("input",function(){
+            const count=input__textarea.value.length
+            charcount.textContent=`${count}/200 Characters` // used backticks 
+
+            if(count===200)
+            {
+                errormsg.textContent="Limit Exceeded!!!"
+            }
+            else{
+                errormsg.textContent=""
+            }
+        })
+    </script>
+</body>
+</html>
